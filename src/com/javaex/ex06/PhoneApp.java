@@ -29,15 +29,13 @@ public class PhoneApp {
 			personAdd(line, pList);
 			
 		}
-		
-		for(Person p : pList) {
-			p.showInfo();
-		}
+		printPerson(pList);
 		
 		Scanner sc = new Scanner(System.in);
 		System.out.println("데이터를 입력하세요");
 		line = sc.nextLine();
 		personAdd(line, pList);
+		printPerson(pList);
 		
 		dbWrite(pList);
 		
@@ -70,6 +68,12 @@ public class PhoneApp {
 		}
 		
 		bw.close();
+	}
+	
+	public static void printPerson(List<Person> pList) {
+		for(Person p : pList) {
+			p.showInfo();
+		}
 	}
 	
 }
