@@ -19,40 +19,25 @@ public class PhoneApp {
 		BufferedReader br = new BufferedReader(fr);
 		
 		List<Phone> pList = new ArrayList<>(); 
-		Phone p01;
 		String line;
-		String name, hp, company;
 		
 		while(true) {
 			line = br.readLine();		
 			if(line == null) {
 				break;
 			}
+			personAdd(line, pList);
 			
-			String [] pArr= line.split(",");
-			name = pArr[0];
-			hp = pArr[1];
-			company = pArr[2];
-			
-			p01 = new Phone(name, hp, company);
-			pList.add(p01);
-		 
 		}
 		
 		for(Phone p : pList) {
 			p.showInfo();
 		}
 		
-		System.out.println("데이터를 입력하세요");
 		Scanner sc = new Scanner(System.in);
+		System.out.println("데이터를 입력하세요");
 		line = sc.nextLine();
-		String []pArr = line.split(",");
-		name = pArr[0];
-		hp = pArr[1];
-		company = pArr[2];
-		
-		p01 = new Phone(name,hp,company);
-		pList.add(p01);
+		personAdd(line, pList);
 		
 		Writer fw = new FileWriter("C:\\javaStudy\\file\\phoneDB.txt");
 		BufferedWriter bw = new BufferedWriter(fw);
@@ -64,12 +49,23 @@ public class PhoneApp {
 			bw.newLine();
 		}
 		
-		
 		br.close();
 		bw.close();
 		sc.close();
 		
 		
 	}
+	
+	
+	public static void personAdd(String line, List<Phone> pList) {
+		String [] pArr= line.split(",");
+		String name = pArr[0];
+		String hp = pArr[1];
+		String company = pArr[2];
+		
+		Phone p = new Phone(name, hp, company);
+		pList.add(p);
+	}
+	
 
 }
