@@ -26,7 +26,7 @@ public class PhoneApp {
 			if(line == null) {
 				break;
 			}
-			personAdd(line, pList);
+			addPerson(line, pList);
 			
 		}
 		printPerson(pList);
@@ -34,10 +34,10 @@ public class PhoneApp {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("데이터를 입력하세요");
 		line = sc.nextLine();
-		personAdd(line, pList);
+		addPerson(line, pList);
 		printPerson(pList);
 		
-		dbWrite(pList);
+		writeDB(pList);
 		
 		br.close();
 		sc.close();
@@ -45,7 +45,7 @@ public class PhoneApp {
 	}
 	
 	
-	public static void personAdd(String line, List<Person> pList) {
+	public static void addPerson(String line, List<Person> pList) {
 		String [] pArr= line.split(",");
 		String name = pArr[0];
 		String hp = pArr[1];
@@ -56,7 +56,7 @@ public class PhoneApp {
 	}
 	
 
-	public static void dbWrite(List<Person> pList) throws IOException {
+	public static void writeDB(List<Person> pList) throws IOException {
 		Writer fw = new FileWriter("C:\\javaStudy\\file\\phoneDB.txt");
 		BufferedWriter bw = new BufferedWriter(fw);
 		
