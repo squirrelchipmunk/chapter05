@@ -18,7 +18,7 @@ public class PhoneApp {
 		Reader fr = new FileReader("C:\\javaStudy\\file\\phoneDB.txt");
 		BufferedReader br = new BufferedReader(fr);
 		
-		List<Phone> pList = new ArrayList<>(); 
+		List<Person> pList = new ArrayList<>(); 
 		String line;
 		
 		while(true) {
@@ -30,7 +30,7 @@ public class PhoneApp {
 			
 		}
 		
-		for(Phone p : pList) {
+		for(Person p : pList) {
 			p.showInfo();
 		}
 		
@@ -42,7 +42,7 @@ public class PhoneApp {
 		Writer fw = new FileWriter("C:\\javaStudy\\file\\phoneDB.txt");
 		BufferedWriter bw = new BufferedWriter(fw);
 		
-		for(Phone p : pList) {
+		for(Person p : pList) {
 			bw.write(p.getName());
 			bw.write(","+p.getHp());
 			bw.write(","+p.getCompany());
@@ -57,13 +57,13 @@ public class PhoneApp {
 	}
 	
 	
-	public static void personAdd(String line, List<Phone> pList) {
+	public static void personAdd(String line, List<Person> pList) {
 		String [] pArr= line.split(",");
 		String name = pArr[0];
 		String hp = pArr[1];
 		String company = pArr[2];
 		
-		Phone p = new Phone(name, hp, company);
+		Person p = new Person(name, hp, company);
 		pList.add(p);
 	}
 	
