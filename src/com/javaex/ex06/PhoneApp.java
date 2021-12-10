@@ -39,20 +39,10 @@ public class PhoneApp {
 		line = sc.nextLine();
 		personAdd(line, pList);
 		
-		Writer fw = new FileWriter("C:\\javaStudy\\file\\phoneDB.txt");
-		BufferedWriter bw = new BufferedWriter(fw);
-		
-		for(Person p : pList) {
-			bw.write(p.getName());
-			bw.write(","+p.getHp());
-			bw.write(","+p.getCompany());
-			bw.newLine();
-		}
+		dbWrite(pList);
 		
 		br.close();
-		bw.close();
 		sc.close();
-		
 		
 	}
 	
@@ -68,4 +58,18 @@ public class PhoneApp {
 	}
 	
 
+	public static void dbWrite(List<Person> pList) throws IOException {
+		Writer fw = new FileWriter("C:\\javaStudy\\file\\phoneDB.txt");
+		BufferedWriter bw = new BufferedWriter(fw);
+		
+		for(Person p : pList) {
+			bw.write(p.getName());
+			bw.write(","+p.getHp());
+			bw.write(","+p.getCompany());
+			bw.newLine();
+		}
+		
+		bw.close();
+	}
+	
 }
